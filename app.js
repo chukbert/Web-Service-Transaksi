@@ -10,11 +10,19 @@ app.use(bodyParser.urlencoded({
 }));
   
 // connection configurations
+// var dbConn = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'transaksi_tiket'
+// });
+
 var dbConn = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'transaksi_tiket'
+    user: 'engima',
+    password: '123',
+    database: 'transaksi_tiket',
+    port: '8889'
 });
   
 // connect to database
