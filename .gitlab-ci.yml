@@ -17,6 +17,8 @@ eslint:
 
 build-image:
   stage: build
+  only: 
+    - master
   tags: 
     - deploy
   script:
