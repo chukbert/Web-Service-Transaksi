@@ -62,3 +62,19 @@ app.listen(3000, function () {
 })
 
 module.exports = app
+
+// Retrieve semua transaksi dari user dengan id = idUser 
+app.get('/transaksi/:id', function (req, res) {
+  
+  let idUser = req.params.id;
+
+  if (!idUser) {
+      return res.status(400).send({ error: true, message: 'Please provide transaksi id' });
+  }
+
+  dbConn.query('SELECT * FROM informasiTiket where idUser=?', idUser, function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: 'transaction list.' });
+  })
+
+})
