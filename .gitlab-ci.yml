@@ -2,6 +2,7 @@ image: node
 
 stages:
   - lint
+  - build
 
 eslint:
   stage: lint
@@ -12,3 +13,12 @@ eslint:
       eslint-plugin-import \
       eslint-plugin-jsx-a11y
     - node_modules/eslint/bin/eslint.js app.js
+
+
+build-image:
+  stage: build
+  tags: 
+    - deploy
+  script:
+    - docker build -t ws-transaksi .
+    - docker run --name ws -d ws-transaksi 
