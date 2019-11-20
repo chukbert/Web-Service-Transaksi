@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 var mysql = require('mysql')
+var checkTrans = require('./wsdl')
 
 app.use(express.static('public'))
 app.use(bodyParser.json())
@@ -16,21 +17,21 @@ app.use(bodyParser.urlencoded({
 //     database: 'transaksi_tiket'
 // })
 
-// var dbConn = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'engima',
-//   password: '123',
-//   database: 'transaksi_tiket',
-//   port: '8889'
-// })
-
 var dbConn = mysql.createConnection({
-  host: '35.240.201.66',
+  host: 'localhost',
   user: 'engima',
   password: '123',
-  database: 'engima',
-  port: '3306'
+  database: 'transaksi_tiket',
+  port: '8889'
 })
+
+// var dbConn = mysql.createConnection({
+//   host: '35.240.201.66',
+//   user: 'engima',
+//   password: '123',
+//   database: 'engima',
+//   port: '3306'
+// })
 
 // connect to database
 dbConn.connect()
@@ -62,6 +63,11 @@ app.post('/transaksi', function (req, res) {
     if (error) throw error
     return res.send({ id: results.insertId })
   })
+})
+
+app.get('/transaksi', async function (req, res) {
+  await checkTrans('a')
+  return res.send({ error: false, message: 'hello' })
 })
 
 // set port
