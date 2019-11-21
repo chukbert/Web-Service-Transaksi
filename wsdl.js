@@ -19,18 +19,31 @@ const checkTrans = async trans => {
    <soapenv:Header/>
    <soapenv:Body>
       <ser:checkTransaction>
-         <arg0>1</arg0>
-         <arg1>2000</arg1>
+         <arg0>${trans.account}</arg0>
+         <arg1>${trans.amount}</arg1>
          <!--Optional:-->
-         <arg2>2019-11-19 19:10:07</arg2>
+         <arg2>${trans.start}</arg2>
          <!--Optional:-->
-         <arg3>2019-11-19 22:10:09</arg3>
+         <arg3>${trans.end}</arg3>
       </ser:checkTransaction>
    </soapenv:Body>
    </soapenv:Envelope>`
 
+  // ----DEV----
+  // var options = {
+  //   url: 'http://localhost:8080/engima_war/WSBank?wsdl',
+  //   method: 'POST',
+  //   body: xml,
+  //   headers: {
+  //     'Content-Type': 'text/xml;charset=utf-8',
+  //     'Accept-Encoding': 'gzip,deflate',
+  //     'Content-Length': xml.length,
+  //     SOAPAction: 'http://services'
+  //   }
+  // }
+
   var options = {
-    url: 'http://localhost:8080/engima_war/WSBank?wsdl',
+    url: 'http://13.229.224.101:8080/engima/WSBank?wsdl',
     method: 'POST',
     body: xml,
     headers: {

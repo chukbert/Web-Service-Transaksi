@@ -66,7 +66,9 @@ app.post('/transaksi', function (req, res) {
 })
 
 app.get('/transaksi', async function (req, res) {
-  await checkTrans('a')
+  const trans = { account: 1, amount: 2000, start: '2019-11-19 19:10:07', end: '2019-11-19 22:10:09' }
+  console.log(trans)
+  await checkTrans(trans)
   return res.send({ error: false, message: 'hello' })
 })
 
