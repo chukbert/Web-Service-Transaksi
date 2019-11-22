@@ -22,5 +22,6 @@ build-image:
   tags: 
     - deploy
   script:
-    - docker build -t ws-transaksi .
-    - docker run --name ws -d ws-transaksi 
+    - docker stop ws || true && docker rm ws || true
+    - docker build -o ./ -t ws-transaksi .
+    - docker run --name ws -p 3000:3000 -d ws-transaksi 
