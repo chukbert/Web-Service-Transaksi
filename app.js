@@ -17,21 +17,22 @@ app.use(bodyParser.urlencoded({
 //     database: 'transaksi_tiket'
 // })
 
-var dbConn = mysql.createConnection({
-  host: 'localhost',
-  user: 'engima',
-  password: '123',
-  database: 'transaksi_tiket',
-  port: '8889'
-})
-
+// DEV ----------------------------------
 // var dbConn = mysql.createConnection({
-//   host: '35.240.201.66',
+//   host: 'localhost',
 //   user: 'engima',
 //   password: '123',
-//   database: 'engima',
-//   port: '3306'
+//   database: 'transaksi_tiket',
+//   port: '8889'
 // })
+
+var dbConn = mysql.createConnection({
+  host: '35.240.201.66',
+  user: 'engima',
+  password: '123',
+  database: 'engima',
+  port: '3306'
+})
 
 // connect to database
 dbConn.connect()
