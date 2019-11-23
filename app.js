@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 var mysql = require('mysql')
-var checkTrans = require('./wsdl')
 
 app.use(express.static('public'))
 app.use(bodyParser.json())
