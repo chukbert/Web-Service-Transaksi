@@ -55,13 +55,6 @@ const checkTrans = async trans => {
   }
 
   var exist = false
-
-  //   const callback = (error, response, body) => {
-  //     if (!error && response.statusCode === 200) {
-  //       console.log('Split result:', body.split('<return>')[1].split('</return>')[0])
-  //       console.log('Split result:', body.split('<return>')[1].split('</return>')[0])
-  //     }
-  //   }
   exist = await requestTrans(options)
   return exist
 }
