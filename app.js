@@ -107,7 +107,7 @@ app.get('/seats/:id', function (req, res) {
 
   dbConn.query('SELECT seatNumber FROM informasiTiket WHERE status = "success" and idSchedule = ?', idSched, function (error, results, fields) {
     if (error) throw error
-    let resp = []
+    const resp = []
     results.forEach(seat => {
       resp.push(seat.seatNumber)
     })
