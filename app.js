@@ -53,6 +53,7 @@ app.post('/transaksi', function (req, res) {
   const waktu = req.body.waktu
   const status = req.body.status
   const notransaksi = !idUser || !idFilm || !seatNumber || !akunVirtual || !idSchedule || !waktu || !status
+  console.log(req.body)
   if (notransaksi) {
     return res.status(400).send({ error: true, message: 'Please insert transaksi' })
   }
@@ -94,6 +95,23 @@ app.get('/transaksi/:id', function (req, res) {
   dbConn.query('SELECT * FROM informasiTiket where idUser=?', idUser, function (error, results, fields) {
     if (error) throw error
     return res.send({ error: false, data: results, message: 'transaction list.' })
+  })
+})
+
+// Retrieve all taken seats
+app.get('/seats/:id', function (req, res) {
+  const idSched = req.params.id
+  if (!idSched) {
+    return res.status(400).send({ error: true, message: 'Please provide transaksi id' })
+  }
+
+  dbConn.query('SELECT seatNumber FROM informasiTiket WHERE status = "success" and idSchedule = ?', idSched, function (error, results, fields) {
+    if (error) throw error
+    const resp = []
+    results.forEach(seat => {
+      resp.push(seat.seatNumber)
+    })
+    return res.send({ error: false, data: resp, message: 'transaction list.' })
   })
 })
 
