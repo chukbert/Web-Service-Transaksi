@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 var mysql = require('mysql')
-var checkTrans = require('./wsdl')
 
 app.use(express.static('public'))
 app.use(bodyParser.json())
@@ -66,11 +65,36 @@ app.post('/transaksi', function (req, res) {
   })
 })
 
-app.get('/transaksi', async function (req, res) {
-  const trans = { account: 1, amount: 2000, start: '2019-11-19 19:10:07', end: '2019-11-19 22:10:09' }
-  console.log(trans)
-  await checkTrans(trans)
-  return res.send({ error: false, message: 'hello' })
+app.post('/transaksichange', async function (req, res) {
+  // const trans = { account: 1, amount: 2000, start: '2019-11-19 19:10:07', end: '2019-11-19 22:10:09' }
+  // await checkTrans(trans)
+  // return res.send({ error: false, message: 'hello' })
+  const idTrans = req.body.idTransaksi
+  const status = req.body.status
+  const notSufficient = !idTrans || !status
+  if (notSufficient) {
+    return res.status(400).send({ error: true, message: 'Please insert sufficient information' })
+  } else {
+    var sql = "UPDATE informasiTiket SET status = '" + status + "' WHERE idTransaksi ='" + idTrans + "'"
+    dbConn.query(sql, function (error, results, fields) {
+      if (error) throw error
+      return res.send({ error: false, data: results, message: 'transaction list.' })
+    })
+  }
+})
+
+// Retrieve semua transaksi dari user dengan id = idUser
+app.get('/transaksi/:id', function (req, res) {
+  const idUser = req.params.id
+
+  if (!idUser) {
+    return res.status(400).send({ error: true, message: 'Please provide transaksi id' })
+  }
+
+  dbConn.query('SELECT * FROM informasiTiket where idUser=?', idUser, function (error, results, fields) {
+    if (error) throw error
+    return res.send({ error: false, data: results, message: 'transaction list.' })
+  })
 })
 
 // set port
