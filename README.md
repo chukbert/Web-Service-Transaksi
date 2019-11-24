@@ -13,3 +13,6 @@ Web service Transaksi memiliki basis data tersendiri yang memiliki informasi tra
 3. Mengembalikan seluruh data transaksi pembelian film seorang pengguna Engima.
 
 ## Basis data yang digunakan pada Web Service Transaksi :
+'''
+`informasiTiket` (`idTransaksi`, `idUser`, `akun_virtual`, `idFilm`, `seatNumber`, `idSchedule`, `waktu_pemesanan`, `status`)
+'''
