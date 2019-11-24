@@ -19,4 +19,7 @@ Web service Transaksi memiliki basis data tersendiri yang memiliki informasi tra
 
 Link deploymeny : [WS-Transaksi](http://13.229.224.101:3000)
 
-### Note : script testing di branch develop
+## Pembagian tugas dppl
+1. CI/CD : 13517081
+2. Eksplorasi dan setup mesin deployment : 13517081, 13517093
+
