@@ -18,3 +18,5 @@ Web service Transaksi memiliki basis data tersendiri yang memiliki informasi tra
 '''
 
 Link deploymeny : [WS-Transaksi](http://13.229.224.101:3000)
+
+### Note : script testing di branch develop
