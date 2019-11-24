@@ -16,3 +16,5 @@ Web service Transaksi memiliki basis data tersendiri yang memiliki informasi tra
 '''
 `informasiTiket` (`idTransaksi`, `idUser`, `akun_virtual`, `idFilm`, `seatNumber`, `idSchedule`, `waktu_pemesanan`, `status`)
 '''
+
+Link deploymeny : [WS-Transaksi](http://13.229.224.101:3000)
